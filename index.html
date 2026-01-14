@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrayMitive - 3D Primitives for After Effects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h2.pr_title {
+      font-weight: 700;
+      font-size: 2.0em;
+      color: black;
+      margin-bottom: 0.5em;
+    }
+
+    .pr_para {
+      font-weight: 300;
+      font-size: 1.2em;
+      color: #545454;
+      margin-bottom: 1em;
+    }
+
+    .pr_para ul {
+      margin-left: 1.5em;
+      margin-top: 0.5em;
+    }
+
+    .pr_para li {
+      margin-bottom: 0.3em;
+    }
+
+    .pr_icons {
+      width: 4em;
+      margin-right: 1em;
+    }
+
+    .praymitive_block {
+      margin-bottom: 3em;
+    }
+
+    .pr_grey_bg {
+      background-color: #F6F6F6;
+      padding: 1.4em 2em;
+      border-radius: 1em;
+    }
+
+    .pr_compatible {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1em;
+    }
+
+    .pr_compatible:last-child {
+      margin-bottom: 0;
+    }
+
+    .pr_subtitle {
+      font-size: 1.0em;
+    }
+
+    .pr_brad {
+      border-radius: 2em;
+      overflow: hidden;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      margin-bottom: 2em;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Primitives Grid */
+    .pr_primitives_grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1em;
+      margin-top: 1.5em;
+    }
+
+    .pr_primitive_video {
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .pr_primitive_video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Grid layouts */
+    .auto_grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2em;
+      align-items: center;
+    }
+
+    .header_flex {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .header_icons {
+      display: flex;
+      flex-direction: column;
+      margin-right: 1em;
+    }
+
+    .header_icons img {
+      margin-bottom: 0.5em;
+    }
+
+    /* Modifiers video */
+    .modifiers_video {
+      overflow: hidden;
+      border-radius: 30px;
+      height: 350px;
+      position: relative;
+    }
+
+    .modifiers_video video,
+    .example_video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .example_video {
+      overflow: hidden;
+      border-radius: 30px;
+      height: 300px;
+    }
+
+    .modifiers_description {
+      margin-top: 1.5em;
+    }
+
+    /* Materials image */
+    .pr_materials img {
+      width: 100%;
+      border-radius: 2em;
+    }
+
+    /* Operations video */
+    .pr_hor_videos video {
+      width: 100%;
+      border-radius: 2em;
+      margin-top: 1.5em;
+    }
+
+    /* CTA section */
+    .cta_section {
+      text-align: center;
+      margin: 3em 0;
+      padding: 2em;
+    }
+
+    .cta_section .pr_para {
+      font-size: 1.3em;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2em;
+      background: #f6f6f6;
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      h2.pr_title {
+        font-size: 2.4em;
+      }
+
+      .pr_icons {
+        width: 5em;
+      }
+
+      .auto_grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .modifiers_video {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .pr_primitives_grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .mobile_reverse > div:first-child {
+        order: 2;
+      }
+
+      .mobile_reverse > div:last-child {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .pr_primitives_grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Promo Video -->
+    <div class="praymitive_block">
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/fURHCHHX8q8?rel=0&modestbranding=1&showinfo=0"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="praymitive_block">
+      <div class="auto_grid">
+        <div class="header_flex">
+          <div class="header_icons">
+            <img class="pr_icons" src="https://aescripts.com/media/author/author_media/tim-building/products/adobe_after_effects_cc_icon.png" alt="After Effects Icon">
+            <img class="pr_icons" src="https://aescripts.com/media/author/author_media/tim-building/products/plugin_icon.png" alt="Plugin Icon">
+          </div>
+          <div>
+            <h2 class="pr_title">PrayMitive Plugin</h2>
+            <p class="pr_para">A Raymarching-powered plugin for crafting 3D objects in After Effects.</p>
+          </div>
+        </div>
+        <div class="pr_grey_bg">
+          <div class="pr_compatible">
+            <img class="pr_icons" src="https://aescripts.com/media/author/author_media/tim-building/products/macos.png" alt="macOS Logo">
+            <div class="pr_para pr_subtitle">Compatible<br> with <strong>macOS</strong> <span style="font-size: x-small;">(10.5 and higher)</span></div>
+          </div>
+          <div class="pr_compatible">
+            <img class="pr_icons" src="https://aescripts.com/media/author/author_media/tim-building/products/windows-support_1.png" alt="Windows Logo">
+            <div class="pr_para pr_subtitle">Now available<br>on <strong>Windows</strong>!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Primitive Integration -->
+    <div class="praymitive_block">
+      <h2 class="pr_title">Seamless Primitive Integration</h2>
+      <p class="pr_para">Craft your universe with our set of 14 diverse primitives. From spheres to toruses, cubes, and more, achieve your vision with unparalleled precision. Every shape you need is right at your fingertips, ready to be molded and transformed.</p>
+
+      <div class="pr_primitives_grid">
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2001.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2002.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2003.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2004.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2005.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2006.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2007.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2008.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2009.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2010.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2011.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2012.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2013.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pr_primitive_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/primitives/Primitive%20DOC%2014.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Smooth Booleans -->
+    <div class="praymitive_block">
+      <h2 class="pr_title">Unlimited Smooth Booleans Exploration</h2>
+      <p class="pr_para">Dive into the world of dynamic <strong>union</strong>, <strong>subtraction</strong>, and <strong>intersection</strong>. Like digital clay in an artist's hand, effortlessly mold, merge, and cut through primitives. Define the smoothness of each operation, seamlessly blending colors and material settings. Your creativity is the only limit, unlocking an infinite array of forms and combinations.</p>
+
+      <div class="pr_hor_videos">
+        <video autoplay loop muted playsinline class="pr_brad">
+          <source src="https://data.timomentum.com/praymitive/operations/Operations.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- Materials -->
+    <div class="praymitive_block">
+      <h2 class="pr_title">Material Mastery with Smooth Booleans</h2>
+      <p class="pr_para">Every material setting blends perfectly through our Smooth Booleans, letting you combine and transition materials effortlessly, setting your creativity truly free. Choose from:</p>
+      <p class="pr_para">
+        <ul>
+          <li><strong>Diffuse</strong> for precise color and intensity.</li>
+          <li><strong>Specular</strong> to dial in reflections, from color to shininess.</li>
+          <li><strong>Glossiness</strong> for that perfect reflective touch.</li>
+          <li><strong>Rim Light Options</strong> that bring out a unique edge glow, even colorized using object normals.</li>
+        </ul>
+      </p>
+
+      <div class="pr_materials pr_brad">
+        <img src="https://aescripts.com/media/author/author_media/tim-building/products/materials_1.jpg" alt="Materials Interface">
+      </div>
+    </div>
+
+    <!-- Modifiers -->
+    <div class="praymitive_block">
+      <div class="auto_grid mobile_reverse">
+        <div class="modifiers_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/operations/Modifiers%20Grid.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div>
+          <h2 class="pr_title">Modifier Mastery: Unleash Dynamic Forms & Motion</h2>
+          <p class="pr_para">With PrayMitive's modifiers, elevate your designs to unprecedented levels. Utilize them in tandem with the core features to sculpt:</p>
+        </div>
+      </div>
+      <div class="modifiers_description">
+        <p class="pr_para">
+          <ul>
+            <li>Wavy serpents using the <strong>Waves modifier</strong>, blended organically.</li>
+            <li>A billowing flag or shimmering water surface with the <strong>Ripples Modifier</strong>.</li>
+            <li>Intertwined forms full of life with the <strong>Twist modifier</strong>, paired with undulating waves for added flair.</li>
+            <li>Mold a wriggling worm or a smoothly curved object utilizing the <strong>Bend modifier</strong>.</li>
+          </ul>
+        </p>
+        <p class="pr_para">And the best part? Every transformation can be <strong>animated</strong>, morphing static artistry into dynamic motion.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta_section">
+      <p class="pr_para">Dive into a universe of creativity, where every shape, shadow, and reflection is under your command. <strong>PrayMitive</strong> isn't just a tool; it's the artist's brush for the digital age.</p>
+    </div>
+
+    <!-- No External Programs -->
+    <div class="praymitive_block">
+      <div class="auto_grid">
+        <div class="example_video">
+          <video autoplay loop muted playsinline>
+            <source src="https://data.timomentum.com/praymitive/Controls.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div>
+          <h2 class="pr_title">No External Programs Needed</h2>
+          <p class="pr_para">Dive into the world of 3D modeling right within After Effects. Say goodbye to complicated third-party tools for simple tasks. Everything you need is right here, in PrayMitive.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="cta_section">
+      <p class="pr_para"><em>Experience PrayMitive today and redefine the boundaries of what's possible!</em></p>
+      <p class="pr_para" style="margin-top: 1em; font-weight: 600; color: black;">For a comprehensive guide and creative inspiration, watch the video tutorial below:</p>
+    </div>
+
+    <!-- Tutorial Video -->
+    <div class="praymitive_block">
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/eKnvPV6JL8c?rel=0&modestbranding=1&showinfo=0"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Developed by <strong>Tim Constantinov</strong></p>
+    <p style="margin-top: 0.5em;">
+      <a href="https://aescripts.com/praymitive/">Buy PrayMitive</a> |
+      <a href="https://aescripts.com/forums/discussion/3342/praymitive">Forum</a> |
+      <a href="https://github.com/nicenices/praymitive-public/issues">Report Issue</a>
+    </p>
+    <p style="margin-top: 1em; font-size: 0.8em;">&copy; 2024 Tim Constantinov. Distributed through aescripts.com</p>
+  </footer>
+</body>
+</html>
